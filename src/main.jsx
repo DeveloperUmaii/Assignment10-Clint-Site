@@ -13,11 +13,15 @@ import MyList from "./Pages/MyList.jsx";
 import LogIn from "./Pages/LogIn.jsx";
 import Register from "./Pages/Register.jsx";
 import MainLayout from "./MainLayout/MainLayout.jsx";
+import SpotUpdate from "./MyTouristSpotCard/SpotUpdate.jsx";
+import ErrorPage from "./Component/ErrorPage.jsx";
+import AuthProvider from "./Pages/FirebaseConfig/AuthProvider.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>, // Main.jsx এখন Parent Layout
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       { index: true,
         element: <Home />,
@@ -36,14 +40,25 @@ const router = createBrowserRouter([
         element: <MyList />,
         loader : () => fetch('http://localhost:5000/spot'),
       },
-      { path: "LogIn", element: <LogIn /> },
-      { path: "Register", element: <Register /> },
+      { path: "/MyList/SpotUpdate/:id",
+        element: <SpotUpdate></SpotUpdate>,
+        loader : ({params}) => fetch(`http://localhost:5000/spot/${params.id}`),
+      },
+      { path: "LogIn", 
+        element: <LogIn />, 
+
+      },
+      { path: "Register", 
+        element: <Register />, 
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );
