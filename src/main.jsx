@@ -16,6 +16,7 @@ import MainLayout from "./MainLayout/MainLayout.jsx";
 import SpotUpdate from "./MyTouristSpotCard/SpotUpdate.jsx";
 import ErrorPage from "./Component/ErrorPage.jsx";
 import AuthProvider from "./Pages/FirebaseConfig/AuthProvider.jsx";
+import Details from "./Pages/Details.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
          path: "AlltouristSpot",
          element: <AlltouristSpot />,
          loader : () => fetch('http://localhost:5000/spot'),
+      },
+      {
+         path: "Details/:id",
+         element: <Details></Details>,
+         loader : ({params}) => fetch(`http://localhost:5000/spot/${params.id}`)
       },
       { path: "AddtouristSpot", element: <AddtouristSpot /> },
       { path: "MyList",
@@ -58,7 +64,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />
     </AuthProvider>
   </StrictMode>
 );

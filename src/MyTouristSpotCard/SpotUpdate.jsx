@@ -7,7 +7,7 @@ const SpotUpdate = () => {
     const [spot, setSpot] = useState(loadedSpot);
     const navigate = useNavigate();
 
-    const { _id, image, SpotName } = spot; 
+    const { _id, image, SpotName, Country } = spot; 
 
     const handleUpdateButton = event => {
         event.preventDefault();
@@ -15,22 +15,27 @@ const SpotUpdate = () => {
         const form = event.target;
         const Updatedimage = form.UpdatedimageUrl.value;
         const UpdatedSpotName = form.UpdatedTouristSpotName.value;
-        const UpdatedTouristSpot = { Updatedimage, UpdatedSpotName };
+        const UpdatedSpotCountry = form.UpdatedTouristSpotCountry.value;
+        const UpdatedTouristSpot = { Updatedimage, UpdatedSpotName, UpdatedSpotCountry };
 
-        fetch(`http://localhost:5000/spot/${_id}`, {
-            method: "PUT",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(UpdatedTouristSpot)
-        })
+   
+// console.log("🔍 Data Sending to API:", UpdatedTouristSpot);
+
+fetch(`http://localhost:5000/spot/${_id}`, {  // ✅ এখানে _id আছে তো?
+
+    method: "PUT",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(UpdatedTouristSpot)
+})
         .then(res => res.json())
         .then(data => {
-            console.log('📢 Updated Data:', data);
-
             if (data) {
                 setSpot({
                     ...spot,
                     image: data.image, // ✅ UI-তে নতুন আপডেট হওয়া ডাটা সেট করা
-                    SpotName: data.SpotName
+                    SpotName: data.SpotName,
+                    Country: data.Country
+
                 });
 
                 Swal.fire({
@@ -42,7 +47,8 @@ const SpotUpdate = () => {
                     navigate('/MyList'); // ✅ আপডেট হওয়ার পর MyList পেজে পাঠাবে
                 });
             } else {
-                console.log('⚠️ Update failed.');
+                // console.log('⚠️ Update failed.');
+                // console.log("🔍 Updating Spot ID:", _id);
             }
         })
         .catch(err => {
@@ -69,6 +75,14 @@ const SpotUpdate = () => {
                         </label>
                         <input type='text' name='UpdatedTouristSpotName' defaultValue={SpotName} placeholder="Tourist Spot Name" className="input input-bordered" />
                     </div>
+                    
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Tourist Spot Country Name</span>
+                        </label>
+                        <input type='text' name='UpdatedTouristSpotCountry' defaultValue={Country} placeholder="Tourist Spot Country Name" className="input input-bordered" />
+                    </div>
+
                     <input type='submit' value='Update Value' className="border-none bg-[#000000] flex justify-center btn btn-outline btn-warning w-5/12" />
                 </form>
             </div>

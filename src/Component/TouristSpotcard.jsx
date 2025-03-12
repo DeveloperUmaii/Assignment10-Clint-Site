@@ -1,8 +1,9 @@
+import { NavLink } from "react-router-dom";
 
 
 const TouristSpotcard = ({spot}) => {
 
-const {image, SpotName} = spot;
+const {image, SpotName, _id} = spot;
     return (
         <div>
             <div className="card bg-base-100 w-96 shadow-sm">
@@ -15,7 +16,7 @@ const {image, SpotName} = spot;
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">{spot?.SpotName}</h2>
                     <div className="card-actions">
-                        <button className="btn btn-primary">Details</button>
+                        <NavLink to={`Details/${_id}`} className="btn btn-primary">Details</NavLink>
                     </div>
                 </div>
             </div>
