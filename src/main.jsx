@@ -17,6 +17,7 @@ import SpotUpdate from "./MyTouristSpotCard/SpotUpdate.jsx";
 import ErrorPage from "./Component/ErrorPage.jsx";
 import AuthProvider from "./Pages/FirebaseConfig/AuthProvider.jsx";
 import Details from "./Pages/Details.jsx";
+import PrivateRout from "./PrivateRout/PrivateRout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,16 +39,31 @@ const router = createBrowserRouter([
       },
       {
          path: "Details/:id",
-         element: <Details></Details>,
+         element: <PrivateRout>
+                      <Details></Details>,
+                  </PrivateRout>,
          loader : ({params}) => fetch(`http://localhost:5000/spot/${params.id}`)
       },
-      { path: "AddtouristSpot", element: <AddtouristSpot /> },
+      {
+        path: "AlltouristSpot/Details/:id",
+        element: <PrivateRout>
+                     <Details></Details>,
+                 </PrivateRout>,
+        loader : ({params}) => fetch(`http://localhost:5000/spot/${params.id}`)
+      },
+      { path: "AddtouristSpot",
+        element: <AddtouristSpot /> },
+
       { path: "MyList",
-        element: <MyList />,
+        element: <PrivateRout>
+                    <MyList />,
+                 </PrivateRout>,
         loader : () => fetch('http://localhost:5000/spot'),
       },
       { path: "/MyList/SpotUpdate/:id",
-        element: <SpotUpdate></SpotUpdate>,
+        element: <PrivateRout>
+                    <SpotUpdate></SpotUpdate>,
+                  </PrivateRout>,
         loader : ({params}) => fetch(`http://localhost:5000/spot/${params.id}`),
       },
       { path: "LogIn", 

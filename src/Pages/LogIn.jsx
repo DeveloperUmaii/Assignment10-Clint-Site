@@ -1,15 +1,15 @@
-// **Login Page**
 import { useState } from "react";
 import { auth } from "./FirebaseConfig/Firebase.init";
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-
+  const location = useLocation(); // ✅ আগের লোকেশন পাওয়া যাবে
+  const from = location.state?.from?.pathname || "/"; // ✅ আগের লোকেশন না থাকলে "/MyList" এ যাবে
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -20,7 +20,7 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       Swal.fire("Success", "Login successful!", "success");
-      navigate('/MyList');
+      navigate(from, { replace: true }); // ✅ আগের লোকেশনে পাঠাবে
     } catch (error) {
       Swal.fire("Error", "Invalid email or password", "error");
     }
@@ -31,7 +31,7 @@ const Login = () => {
     try {
       await signInWithPopup(auth, provider);
       Swal.fire("Success", "Google login successful!", "success");
-      navigate('/MyList');
+      navigate(from, { replace: true }); // ✅ আগের লোকেশনে পাঠাবে
     } catch (error) {
       Swal.fire("Error", error.message, "error");
     }
@@ -51,4 +51,5 @@ const Login = () => {
     </form>
   );
 };
+
 export default Login;

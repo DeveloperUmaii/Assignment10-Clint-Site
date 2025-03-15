@@ -1,10 +1,8 @@
-// **Register Page (Sign Up)**
 import { useState } from "react";
 import { auth } from "./FirebaseConfig/Firebase.init";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
-
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,7 +12,7 @@ const Register = () => {
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
-    const image = form.PhotoUrl.value;
+    const photoURL = form.PhotoUrl.value;
     const password = form.password.value;
 
     if (password.length < 6 || !/[A-Z]/.test(password) || !/[a-z]/.test(password)) {
@@ -23,7 +21,15 @@ const Register = () => {
     }
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // 🔹 Register করার পর displayName ও photoURL সেট করা
+      await updateProfile(user, {
+        displayName: name,
+        photoURL: photoURL,
+      });
+
       Swal.fire("Success", "Registration successful!", "success");
     } catch (error) {
       Swal.fire("Error", error.message, "error");
@@ -34,7 +40,7 @@ const Register = () => {
     <form onSubmit={handleRegister} className="p-5 w-96 mx-auto bg-gray-100 rounded-lg shadow-lg">
       <input type="text" name="name" placeholder="Name" className="input input-bordered w-full my-2" required />
       <input type="email" name="email" placeholder="Email" className="input input-bordered w-full my-2" required />
-      <input type='url' name="PhotoUrl" placeholder="Photo Url" className="input input-bordered w-full my-2" required />
+      <input type="url" name="PhotoUrl" placeholder="Photo URL" className="input input-bordered w-full my-2" required />
       <div className="relative">
         <input type={showPassword ? "text" : "password"} name="password" placeholder="Password" className="input input-bordered w-full my-2" required />
         <button type="button" className="absolute top-3 right-3" onClick={() => setShowPassword(!showPassword)}>
@@ -45,4 +51,5 @@ const Register = () => {
     </form>
   );
 };
+
 export default Register;
