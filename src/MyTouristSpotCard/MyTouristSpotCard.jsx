@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const MyTouristSpotCard = ({ spot, onDelete }) => {
-    const { _id, image, SpotName, TravelTime, Visitors, Cost } = spot; //Step-04
+    const { _id, image, SpotName, TravelTime, Visitors, Cost } = spot;
 
     const handleDelete = async () => {
         const result = await Swal.fire({
@@ -26,7 +26,7 @@ const MyTouristSpotCard = ({ spot, onDelete }) => {
 
                 if (data.result.deletedCount > 0) {
                     console.log("Spot deleted successfully:", _id);
-                    onDelete(_id); // ✅ UI থেকে সরানোর জন্য ফাংশন কল করা হচ্ছে
+                    onDelete(_id);
 
                     await Swal.fire({
                         title: "মুছে ফেলা হয়েছে!",
@@ -41,19 +41,22 @@ const MyTouristSpotCard = ({ spot, onDelete }) => {
     };
 
     return (
-        <div className="card bg-base-100 w-96 shadow-sm">
-            <figure className="px-10 pt-10">
-                <img src={image} alt={SpotName} className="rounded-xl" />
+        <div className="card w-96 bg-white shadow-xl rounded-lg border border-gray-200 transition-transform transform hover:scale-105 hover:shadow-2xl">
+            <figure className="px-6 pt-6">
+                <img src={image} alt={SpotName} className="rounded-lg w-full h-48 object-cover" />
             </figure>
-            <div className="card-body items-center text-center">
-                <h2 className="card-title text-green-500 font-extrabold">My Tourist Spot Card</h2>
-                <h2 className="card-title">{SpotName}</h2>   {/*Step-05*/} 
-                <h2 className="card-title">{TravelTime}</h2> {/*Step-05*/}      
-                <h2 className="card-title">{Visitors}</h2>   {/*Step-05*/}      
-                <h2 className="card-title">{Cost}</h2>       {/*Step-05*/}     
-                <div className="card-actions">
-                    <Link to={`SpotUpdate/${_id}`} className="btn btn-primary bg-[#1efc1e] border-none">Update</Link>
-                    <button onClick={handleDelete} className="btn btn-primary bg-[#ff0b0b] border-none">Delete</button>
+            <div className="card-body text-center">
+                <h2 className="text-xl font-bold text-green-600">{SpotName}</h2>
+                <p className="text-gray-600"><strong>ভ্রমণের সময়:</strong> {TravelTime}</p>
+                <p className="text-gray-600"><strong>দর্শনার্থী:</strong> {Visitors}</p>
+                <p className="text-gray-600"><strong>ব্যয়:</strong> {Cost} টাকা</p>
+                <div className="card-actions mt-4 flex justify-center">
+                    <Link to={`SpotUpdate/${_id}`} className="btn btn-success px-4 py-2 rounded-md transition hover:bg-green-700">
+                        আপডেট করুন
+                    </Link>
+                    <button onClick={handleDelete} className="btn btn-error px-4 py-2 rounded-md transition hover:bg-red-700">
+                        ডিলিট করুন
+                    </button>
                 </div>
             </div>
         </div>
