@@ -5,11 +5,11 @@ import Footer from "../Component/Footer";
 
 const MainLayout = () => {
   return (
-    <div>
+    <>
       <Nav /> {/* সব পেজে Navbar থাকবে */}
       <Outlet /> {/* এখানে প্রতিটি পেজ ডাইনামিকভাবে লোড হবে */}
       <Footer></Footer>
-    </div>
+    </>
   );
 };
 

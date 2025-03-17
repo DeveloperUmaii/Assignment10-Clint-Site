@@ -7,7 +7,8 @@ const SpotUpdate = () => {
     const [spot, setSpot] = useState(loadedSpot);
     const navigate = useNavigate();
 
-    const { _id, image, SpotName, Country } = spot; 
+    // const { _id, image, SpotName, Country } = spot; 
+    const { _id, image, SpotName, Country, location, Season, TravelTime, Visitors, Description, Cost } = spot; 
 
     const handleUpdateButton = event => {
         event.preventDefault();
@@ -16,9 +17,15 @@ const SpotUpdate = () => {
         const Updatedimage = form.UpdatedimageUrl.value;
         const UpdatedSpotName = form.UpdatedTouristSpotName.value;
         const UpdatedSpotCountry = form.UpdatedTouristSpotCountry.value;
-        const UpdatedTouristSpot = { Updatedimage, UpdatedSpotName, UpdatedSpotCountry };
+        const UpdatedSpotLocation = form.UpdatedTouristSpotLocation.value; 
+        const UpdatedSpotSeason = form.UpdatedTouristSpotSeason.value;
+        const UpdatedSpotTravelTime = form.UpdatedTouristSpotTravelTime.value;
+        const UpdatedSpotVisitors = form.UpdatedTouristSpotVisitors.value;
+        const UpdatedSpotCost = form.UpdatedTouristSpotCost.value;
+        const UpdatedSpotDescription = form.UpdatedTouristSpotDescription.value;
 
-   
+
+        const UpdatedTouristSpot = { Updatedimage, UpdatedSpotName, UpdatedSpotCountry,UpdatedSpotLocation, UpdatedSpotSeason, UpdatedSpotTravelTime, UpdatedSpotVisitors, UpdatedSpotCost, UpdatedSpotDescription };
 // console.log("🔍 Data Sending to API:", UpdatedTouristSpot);
 
 fetch(`http://localhost:5000/spot/${_id}`, {  // ✅ এখানে _id আছে তো?
@@ -34,7 +41,13 @@ fetch(`http://localhost:5000/spot/${_id}`, {  // ✅ এখানে _id আছ�
                     ...spot,
                     image: data.image, // ✅ UI-তে নতুন আপডেট হওয়া ডাটা সেট করা
                     SpotName: data.SpotName,
-                    Country: data.Country
+                    Country: data.Country,                 
+                    Location: data.Location,
+                    Season: data.Season,
+                    TravelTime: data.TravelTime,
+                    Visitors: data.Visitors,
+                    Cost: data.Cost,
+                    Description: data.Description,
 
                 });
 
@@ -83,6 +96,48 @@ fetch(`http://localhost:5000/spot/${_id}`, {  // ✅ এখানে _id আছ�
                         <input type='text' name='UpdatedTouristSpotCountry' defaultValue={Country} placeholder="Tourist Spot Country Name" className="input input-bordered" />
                     </div>
 
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Tourist Spot location</span>
+                        </label>
+                        <input type='text' name='UpdatedTouristSpotLocation' defaultValue={location} placeholder="Tourist Spot Country Name" className="input input-bordered" />
+                    </div>
+ 
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Tourist Spot Season</span>
+                        </label>
+                        <input type='text' name='UpdatedTouristSpotSeason' defaultValue={Season} placeholder="Tourist Spot Country Name" className="input input-bordered" />
+                    </div>
+ 
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Tourist Spot TravelTime</span>
+                        </label>
+                        <input type='text' name='UpdatedTouristSpotTravelTime' defaultValue={TravelTime} placeholder="Tourist Spot Country Name" className="input input-bordered" />
+                    </div>
+ 
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Tourist Spot Visitors</span>
+                        </label>
+                        <input type='text' name='UpdatedTouristSpotVisitors' defaultValue={Visitors} placeholder="Tourist Spot Country Name" className="input input-bordered" />
+                    </div>
+ 
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Tourist Spot Cost</span>
+                        </label>
+                        <input type='text' name='UpdatedTouristSpotCost' defaultValue={Cost} placeholder="Tourist Spot Country Name" className="input input-bordered" />
+                    </div>
+ 
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Tourist Spot Description</span>
+                        </label>
+                        <input type='text' name='UpdatedTouristSpotDescription' defaultValue={Description} placeholder="Tourist Spot Country Name" className="input input-bordered" />
+                    </div>
+ 
                     <input type='submit' value='Update Value' className="border-none bg-[#000000] flex justify-center btn btn-outline btn-warning w-5/12" />
                 </form>
             </div>
@@ -91,3 +146,4 @@ fetch(`http://localhost:5000/spot/${_id}`, {  // ✅ এখানে _id আছ�
 };
 
 export default SpotUpdate;
+

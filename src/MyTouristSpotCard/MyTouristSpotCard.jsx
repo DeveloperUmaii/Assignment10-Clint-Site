@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const MyTouristSpotCard = ({ spot, onDelete }) => {
-    const { _id, image, SpotName } = spot;
+    const { _id, image, SpotName, TravelTime, Visitors, Cost } = spot; //Step-04
 
     const handleDelete = async () => {
         const result = await Swal.fire({
@@ -47,7 +47,10 @@ const MyTouristSpotCard = ({ spot, onDelete }) => {
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title text-green-500 font-extrabold">My Tourist Spot Card</h2>
-                <h2 className="card-title">{SpotName}</h2>
+                <h2 className="card-title">{SpotName}</h2>   {/*Step-05*/} 
+                <h2 className="card-title">{TravelTime}</h2> {/*Step-05*/}      
+                <h2 className="card-title">{Visitors}</h2>   {/*Step-05*/}      
+                <h2 className="card-title">{Cost}</h2>       {/*Step-05*/}     
                 <div className="card-actions">
                     <Link to={`SpotUpdate/${_id}`} className="btn btn-primary bg-[#1efc1e] border-none">Update</Link>
                     <button onClick={handleDelete} className="btn btn-primary bg-[#ff0b0b] border-none">Delete</button>
