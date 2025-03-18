@@ -3,6 +3,9 @@ import Nav from './Nav';
 import { useLoaderData } from 'react-router-dom';
 import TouristSpotcard from './TouristSpotcard';
 import Slider from './Slider';
+import CountriesSection from './CountriesSection';
+import TopRatedDestinations from './TopRatedDestinations';
+import TravelTipsBlog from './TravelTipsBlog';
 
 
 const Home = () => {
@@ -19,8 +22,9 @@ const Home = () => {
                         ></TouristSpotcard>)
                 }
           </div>
-
-         
+        <CountriesSection />
+         <TopRatedDestinations></TopRatedDestinations>
+         <TravelTipsBlog></TravelTipsBlog>
 
      </div>
     );

@@ -18,6 +18,7 @@ import ErrorPage from "./Component/ErrorPage.jsx";
 import AuthProvider from "./Pages/FirebaseConfig/AuthProvider.jsx";
 import Details from "./Pages/Details.jsx";
 import PrivateRout from "./PrivateRout/PrivateRout.jsx";
+import CountriesSpeacialSpot from "./Component/CountriesSpeacialSpot.jsx";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
       { path: "Register", 
         element: <Register />, 
       },
+      {
+        path: 'CountriesSpeacialSpot/:id',
+        element: <CountriesSpeacialSpot />
+      }      
     ],
   },
 ]);
