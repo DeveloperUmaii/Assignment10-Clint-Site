@@ -34,20 +34,73 @@ const SpotUpdate = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-r from-[#668df886] to-[#02fab06c] flex justify-center items-center">
-            <div className="w-11/12 md:w-3/5 lg:w-2/5 p-8 bg-white shadow-2xl rounded-xl">
-                <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Update Tourist Spot</h1>
+        <div className="min-h-screen bg-gradient-to-r from-blue-100 to-purple-200 flex flex-col items-center py-10">
+            <h1 className="text-4xl font-bold text-gray-800 mb-2">Update Tourist Spot</h1>
+            <h2 className="text-xl font-semibold text-gray-600 mb-6">Spot Name: {SpotName}</h2>
+            
+            <div className="bg-white shadow-lg rounded-xl p-8 w-full max-w-2xl">
                 <form onSubmit={handleUpdateButton} className="space-y-4">
-                    <input type='url' name='image' defaultValue={image} placeholder="Image URL" className="input input-bordered w-full" />
-                    <input type='text' name='SpotName' defaultValue={SpotName} placeholder="Tourist Spot Name" className="input input-bordered w-full" />
-                    <input type='text' name='Country' defaultValue={Country} placeholder="Country" className="input input-bordered w-full" />
-                    <input type='text' name='location' defaultValue={location} placeholder="Location" className="input input-bordered w-full" />
-                    <input type='text' name='Season' defaultValue={Season} placeholder="Best Season" className="input input-bordered w-full" />
-                    <input type='text' name='TravelTime' defaultValue={TravelTime} placeholder="Travel Time" className="input input-bordered w-full" />
-                    <input type='text' name='Visitors' defaultValue={Visitors} placeholder="Visitors Per Year" className="input input-bordered w-full" />
-                    <input type='text' name='Cost' defaultValue={Cost} placeholder="Estimated Cost" className="input input-bordered w-full" />
-                    <textarea name='Description' defaultValue={Description} placeholder="Description" className="textarea textarea-bordered w-full"></textarea>
-                    <button type='submit' className="btn bg-indigo-600 text-white w-full hover:bg-indigo-700">Update Spot</button>
+                    
+                    {/* Image URL */}
+                    <div className="form-control">
+                        <label className="label font-semibold">Image URL</label>
+                        <input type="url" name="image" defaultValue={image} placeholder="Enter image URL" className="input input-bordered w-full" />
+                    </div>
+
+                    {/* Spot Name */}
+                    <div className="form-control">
+                        <label className="label font-semibold">Tourist Spot Name</label>
+                        <input type="text" name="SpotName" defaultValue={SpotName} placeholder="Spot Name" className="input input-bordered w-full" />
+                    </div>
+
+                    {/* Country */}
+                    <div className="form-control">
+                        <label className="label font-semibold">Country</label>
+                        <input type="text" name="Country" defaultValue={Country} placeholder="Country Name" className="input input-bordered w-full" />
+                    </div>
+
+                    {/* Location */}
+                    <div className="form-control">
+                        <label className="label font-semibold">Location</label>
+                        <input type="text" name="location" defaultValue={location} placeholder="Location" className="input input-bordered w-full" />
+                    </div>
+
+                    {/* Season */}
+                    <div className="form-control">
+                        <label className="label font-semibold">Best Season</label>
+                        <input type="text" name="Season" defaultValue={Season} placeholder="Best Season to Visit" className="input input-bordered w-full" />
+                    </div>
+
+                    {/* Travel Time */}
+                    <div className="form-control">
+                        <label className="label font-semibold">Travel Time</label>
+                        <input type="text" name="TravelTime" defaultValue={TravelTime} placeholder="Estimated Travel Time" className="input input-bordered w-full" />
+                    </div>
+
+                    {/* Visitors */}
+                    <div className="form-control">
+                        <label className="label font-semibold">Visitors per Year</label>
+                        <input type="text" name="Visitors" defaultValue={Visitors} placeholder="Number of Visitors per Year" className="input input-bordered w-full" />
+                    </div>
+
+                    {/* Cost */}
+                    <div className="form-control">
+                        <label className="label font-semibold">Cost (in USD)</label>
+                        <input type="text" name="Cost" defaultValue={Cost} placeholder="Estimated Cost" className="input input-bordered w-full" />
+                    </div>
+
+                    {/* Description */}
+                    <div className="form-control">
+                        <label className="label font-semibold">Description</label>
+                        <textarea name="Description" defaultValue={Description} placeholder="Write a short description" className="textarea textarea-bordered w-full"></textarea>
+                    </div>
+
+                    {/* Submit Button */}
+                    <div className="flex justify-center mt-6">
+                        <button type="submit" className="btn btn-primary btn-wide bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:shadow-lg">
+                            Update Spot
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
