@@ -7,138 +7,47 @@ const SpotUpdate = () => {
     const [spot, setSpot] = useState(loadedSpot);
     const navigate = useNavigate();
 
-    // const { _id, image, SpotName, Country } = spot; 
-    const { _id, image, SpotName, Country, location, Season, TravelTime, Visitors, Description, Cost } = spot; 
+    const { _id, image, SpotName, Country, location, Season, TravelTime, Visitors, Description, Cost } = spot;
 
     const handleUpdateButton = event => {
         event.preventDefault();
+        const formData = new FormData(event.target);
+        const UpdatedTouristSpot = Object.fromEntries(formData.entries());
 
-        const form = event.target;
-        const Updatedimage = form.UpdatedimageUrl.value;
-        const UpdatedSpotName = form.UpdatedTouristSpotName.value;
-        const UpdatedSpotCountry = form.UpdatedTouristSpotCountry.value;
-        const UpdatedSpotLocation = form.UpdatedTouristSpotLocation.value; 
-        const UpdatedSpotSeason = form.UpdatedTouristSpotSeason.value;
-        const UpdatedSpotTravelTime = form.UpdatedTouristSpotTravelTime.value;
-        const UpdatedSpotVisitors = form.UpdatedTouristSpotVisitors.value;
-        const UpdatedSpotCost = form.UpdatedTouristSpotCost.value;
-        const UpdatedSpotDescription = form.UpdatedTouristSpotDescription.value;
-
-
-        const UpdatedTouristSpot = { Updatedimage, UpdatedSpotName, UpdatedSpotCountry,UpdatedSpotLocation, UpdatedSpotSeason, UpdatedSpotTravelTime, UpdatedSpotVisitors, UpdatedSpotCost, UpdatedSpotDescription };
-// console.log("🔍 Data Sending to API:", UpdatedTouristSpot);
-
-fetch(`http://localhost:5000/spot/${_id}`, {  // ✅ এখানে _id আছে তো?
-
-    method: "PUT",
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(UpdatedTouristSpot)
-})
+        fetch(`http://localhost:5000/spot/${_id}`, {
+            method: "PUT",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(UpdatedTouristSpot)
+        })
         .then(res => res.json())
         .then(data => {
-            if (data) {
-                setSpot({
-                    ...spot,
-                    image: data.image, // ✅ UI-তে নতুন আপডেট হওয়া ডাটা সেট করা
-                    SpotName: data.SpotName,
-                    Country: data.Country,                 
-                    Location: data.Location,
-                    Season: data.Season,
-                    TravelTime: data.TravelTime,
-                    Visitors: data.Visitors,
-                    Cost: data.Cost,
-                    Description: data.Description,
-
-                });
-
+            if (data.success) {
                 Swal.fire({
                     title: "SUCCESSFUL!",
                     text: "Spot Updated successfully!",
                     icon: "success",
                     confirmButtonText: 'Done'
-                }).then(() => {
-                    navigate('/MyList'); // ✅ আপডেট হওয়ার পর MyList পেজে পাঠাবে
-                });
-            } else {
-                // console.log('⚠️ Update failed.');
-                // console.log("🔍 Updating Spot ID:", _id);
+                }).then(() => navigate('/MyList'));
             }
         })
-        .catch(err => {
-            console.error('❌ Update Error:', err);
-        });
+        .catch(err => console.error('❌ Update Error:', err));
     };
 
     return (
-        <div>
-            <h1 className="text-4xl">Update</h1>
-            <h1 className="text-2xl">Spotname : {SpotName}</h1>
-            <h1 className="text-4xl text-center">Update-tourist-Spot</h1>
-            <div className="border border-[#a932ee] flex justify-center">
-                <form onSubmit={handleUpdateButton} className='w-6/12 py-20'>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Image URL</span>
-                        </label>
-                        <input type='url' name='UpdatedimageUrl' defaultValue={image} placeholder="image Url" className="input input-bordered" />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Tourist Spot Name</span>
-                        </label>
-                        <input type='text' name='UpdatedTouristSpotName' defaultValue={SpotName} placeholder="Tourist Spot Name" className="input input-bordered" />
-                    </div>
-                    
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Tourist Spot Country Name</span>
-                        </label>
-                        <input type='text' name='UpdatedTouristSpotCountry' defaultValue={Country} placeholder="Tourist Spot Country Name" className="input input-bordered" />
-                    </div>
-
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Tourist Spot location</span>
-                        </label>
-                        <input type='text' name='UpdatedTouristSpotLocation' defaultValue={location} placeholder="Tourist Spot Country Name" className="input input-bordered" />
-                    </div>
- 
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Tourist Spot Season</span>
-                        </label>
-                        <input type='text' name='UpdatedTouristSpotSeason' defaultValue={Season} placeholder="Tourist Spot Country Name" className="input input-bordered" />
-                    </div>
- 
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Tourist Spot TravelTime</span>
-                        </label>
-                        <input type='text' name='UpdatedTouristSpotTravelTime' defaultValue={TravelTime} placeholder="Tourist Spot Country Name" className="input input-bordered" />
-                    </div>
- 
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Tourist Spot Visitors</span>
-                        </label>
-                        <input type='text' name='UpdatedTouristSpotVisitors' defaultValue={Visitors} placeholder="Tourist Spot Country Name" className="input input-bordered" />
-                    </div>
- 
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Tourist Spot Cost</span>
-                        </label>
-                        <input type='text' name='UpdatedTouristSpotCost' defaultValue={Cost} placeholder="Tourist Spot Country Name" className="input input-bordered" />
-                    </div>
- 
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Tourist Spot Description</span>
-                        </label>
-                        <input type='text' name='UpdatedTouristSpotDescription' defaultValue={Description} placeholder="Tourist Spot Country Name" className="input input-bordered" />
-                    </div>
- 
-                    <input type='submit' value='Update Value' className="border-none bg-[#000000] flex justify-center btn btn-outline btn-warning w-5/12" />
+        <div className="min-h-screen bg-gradient-to-r from-[#668df886] to-[#02fab06c] flex justify-center items-center">
+            <div className="w-11/12 md:w-3/5 lg:w-2/5 p-8 bg-white shadow-2xl rounded-xl">
+                <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Update Tourist Spot</h1>
+                <form onSubmit={handleUpdateButton} className="space-y-4">
+                    <input type='url' name='image' defaultValue={image} placeholder="Image URL" className="input input-bordered w-full" />
+                    <input type='text' name='SpotName' defaultValue={SpotName} placeholder="Tourist Spot Name" className="input input-bordered w-full" />
+                    <input type='text' name='Country' defaultValue={Country} placeholder="Country" className="input input-bordered w-full" />
+                    <input type='text' name='location' defaultValue={location} placeholder="Location" className="input input-bordered w-full" />
+                    <input type='text' name='Season' defaultValue={Season} placeholder="Best Season" className="input input-bordered w-full" />
+                    <input type='text' name='TravelTime' defaultValue={TravelTime} placeholder="Travel Time" className="input input-bordered w-full" />
+                    <input type='text' name='Visitors' defaultValue={Visitors} placeholder="Visitors Per Year" className="input input-bordered w-full" />
+                    <input type='text' name='Cost' defaultValue={Cost} placeholder="Estimated Cost" className="input input-bordered w-full" />
+                    <textarea name='Description' defaultValue={Description} placeholder="Description" className="textarea textarea-bordered w-full"></textarea>
+                    <button type='submit' className="btn bg-indigo-600 text-white w-full hover:bg-indigo-700">Update Spot</button>
                 </form>
             </div>
         </div>
@@ -146,4 +55,3 @@ fetch(`http://localhost:5000/spot/${_id}`, {  // ✅ এখানে _id আছ�
 };
 
 export default SpotUpdate;
-
