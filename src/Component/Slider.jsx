@@ -5,9 +5,15 @@ import { Autoplay } from 'swiper/modules';
 
 const Slider = () => {
     const slides = [
-        'https://images.pexels.com/photos/975771/pexels-photo-975771.jpeg?auto=compress&cs=tinysrgb&w=600',
-        'https://media.istockphoto.com/id/1446305840/photo/tropical-rainforest-in-costa-rica.jpg?b=1&s=612x612&w=0&k=20&c=_ve3dm4fwT5vceWVY5SHSNwkdID9mQgZhNytF_Ev2QQ=',
-        'https://images.unsplash.com/photo-1500622944204-b135684e99fd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJhbHxlbnwwfHwwfHx8MA%3D%3D',
+        'https://i.ibb.co.com/cXxpCYHs/Gemini-Generated-Image-p6ctgzp6ctgzp6ct.jpg',
+         'https://i.ibb.co.com/Xx5T72ns/Gemini-Generated-Image-4psxxl4psxxl4psx.jpg',
+         'https://i.ibb.co.com/Df2pSkxc/Gemini-Generated-Image-65463n65463n6546.jpg',
+         'https://i.ibb.co.com/j99px32g/Gemini-Generated-Image-u1qwiyu1qwiyu1qw.jpg',
+         'https://i.ibb.co.com/JgP3cmJ/Gemini-Generated-Image-lu7qh3lu7qh3lu7q.jpg',
+         'https://i.ibb.co.com/3971rW7m/Gemini-Generated-Image-lho8d4lho8d4lho8.jpg',
+         'https://i.ibb.co.com/WpDT44F2/Gemini-Generated-Image-w5u0u0w5u0u0w5u0.jpg',
+         'https://i.ibb.co.com/PzVpC339/Gemini-Generated-Image-2xuy2y2xuy2y2xuy.jpg',
+         'https://i.ibb.co.com/4nJ5v9C1/Gemini-Generated-Image-v0sw14v0sw14v0sw.jpg',
     ];
 
     return (
@@ -35,4 +41,3 @@ const Slider = () => {
 };
 
 export default Slider;
-

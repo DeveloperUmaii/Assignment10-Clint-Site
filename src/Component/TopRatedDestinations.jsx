@@ -2,21 +2,21 @@ import React from "react";
 
 const topDestinations = [
   {
-    name: "Eiffel Tower",
-    location: "Paris, France",
-    image: "https://source.unsplash.com/400x300/?eiffel-tower",
+    name: "HONG-KONG",
+    location: "China",
+    image: "https://i.ibb.co.com/rKXtLQPK/hong-kong.jpg",
     rating: 4.9,
   },
   {
-    name: "Santorini",
-    location: "Greece",
-    image: "https://source.unsplash.com/400x300/?santorini",
+    name: "TOKIYO",
+    location: "Japan",
+    image: "https://i.ibb.co.com/VY0YRJRp/Tokiyo.jpg",
     rating: 4.8,
   },
   {
-    name: "Great Wall of China",
-    location: "China",
-    image: "https://source.unsplash.com/400x300/?great-wall-china",
+    name: "BALI",
+    location: "Indunesia",
+    image: "https://i.ibb.co.com/dwYtFmRB/Bali.jpg",
     rating: 4.7,
   },
 ];
@@ -24,7 +24,7 @@ const topDestinations = [
 const TopRatedDestinations = () => {
   return (
     <div className="p-8">
-      <h2 className="text-3xl font-bold text-center mb-6">Top Rated Destinations</h2>
+      <h2 className="text-3xl font-bold text-center mb-6">Top Rated Destinations Asia</h2>
       <div className="grid md:grid-cols-3 gap-6">
         {topDestinations.map((place, index) => (
           <div key={index} className="border rounded-lg shadow-lg p-4 bg-white">
