@@ -3,40 +3,40 @@ import { NavLink } from "react-router-dom";
 
 const countries = [
     {
-        id: '01',
+        id: '0',
         name: "Bangladesh",
         flag: "https://i.ibb.co.com/NnnMcZqx/Bangladesh.jpg",
-        description: "Thailand is known for its tropical beaches, royal palaces, ancient ruins, and ornate temples displaying figures of Buddha.",
+        description: "Bangladesh is a land of natural beauty, historical landmarks, and cultural heritage. From the stunning Cox’s Bazar beach to the Sundarbans mangrove forest, it offers attractions for every traveler.",
     },
     {
-        id: '02',
+        id: '1',
         name: "Thailand",
         flag: "https://i.ibb.co.com/KxHhDDsY/Indunesia.jpg",
-        description: "Italy is home to the world's greatest art, architecture, and delicious cuisine, including pasta and pizza.",
+        description: "Thailand is a vibrant tourist destination known for its stunning beaches, rich culture, and delicious cuisine. From Bangkok’s temples to Phuket’s islands, it offers unforgettable experiences.",
     },
     {
-        id: '03',
+        id: '2',
         name: "Indunesia",
         flag: "https://i.ibb.co.com/0p4mD6fn/Indunesiaa.jpg",
-        description: "Egypt is famous for its ancient civilization, pyramids, Sphinx, and Nile River, making it a top travel destination.",
+        description: "Indonesia is a diverse tourist paradise with beautiful beaches, volcanoes, and rich cultural heritage. From Bali’s serene landscapes to Jakarta’s vibrant city life, it offers endless adventures.",
     },
     {
-        id: '04',
-        name: "Combodia",
-        flag: "https://i.ibb.co.com/5xtFM6JF/Combodia.jpg",
-        description: "Thailand is known for its tropical beaches, royal palaces, ancient ruins, and ornate temples displaying figures of Buddha.",
-    },
-    {
-        id: '05',
+        id: '3',
         name: "Malaysia",
         flag: "https://i.ibb.co.com/mrmqJ3ct/Malaysia.jpg",
-        description: "Italy is home to the world's greatest art, architecture, and delicious cuisine, including pasta and pizza.",
+        description: "Malaysia is a diverse tourist destination with modern cities, tropical islands, and rich cultural heritage. From Kuala Lumpur’s skyscrapers to Langkawi’s beaches, it offers unforgettable experiences."
     },
+     {
+        id: '4',
+        name: "Combodia",
+        flag: "https://i.ibb.co.com/5xtFM6JF/Combodia.jpg",
+        description: "Cambodia is a fascinating tourist destination known for its ancient temples, rich history, and natural beauty. From Angkor Wat to pristine beaches, it offers unforgettable experiences.",
+    },   
     {
-        id: '06',
+        id: '5',
         name: "Veitnam",
         flag: "https://i.ibb.co.com/HT943GYX/Veitnam.jpg",
-        description: "Egypt is famous for its ancient civilization, pyramids, Sphinx, and Nile River, making it a top travel destination.",
+        description: "Vietnam is a stunning tourist destination known for its natural beauty, rich history, and delicious cuisine. From Ha Long Bay to Hanoi’s old quarters, it offers unforgettable experiences.",
     },
 ];
 
