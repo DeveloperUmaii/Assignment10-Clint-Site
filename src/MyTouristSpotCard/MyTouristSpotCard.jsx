@@ -7,13 +7,13 @@ const MyTouristSpotCard = ({ spot, onDelete }) => {
 
     const handleDelete = async () => {
         const result = await Swal.fire({
-            title: "আপনি কি নিশ্চিত?",
-            text: "এটি মুছে ফেলার পর ফিরে আসা যাবে না!",
+            title: "Are you sure?",
+            text: "It can't be recover once it's deleted!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "হ্যাঁ, মুছে ফেলুন!"
+            confirmButtonText: "Yes, DELETE!"
         });
 
         if (result.isConfirmed) {
@@ -29,8 +29,8 @@ const MyTouristSpotCard = ({ spot, onDelete }) => {
                     onDelete(_id);
 
                     await Swal.fire({
-                        title: "মুছে ফেলা হয়েছে!",
-                        text: "আপনার তথ্য মুছে ফেলা হয়েছে।",
+                        title: "Deleted!",
+                        text: "Your spot data succesfully deleted",
                         icon: "success",
                     });
                 }
@@ -47,15 +47,15 @@ const MyTouristSpotCard = ({ spot, onDelete }) => {
             </figure>
             <div className="card-body text-center">
                 <h2 className="text-xl font-bold text-green-600">{SpotName}</h2>
-                <p className="text-gray-600"><strong>ভ্রমণের সময়:</strong> {TravelTime}</p>
-                <p className="text-gray-600"><strong>দর্শনার্থী:</strong> {Visitors}</p>
-                <p className="text-gray-600"><strong>ব্যয়:</strong> {Cost} টাকা</p>
+                <p className="text-gray-600"><strong>Travel Time:</strong> {TravelTime}</p>
+                <p className="text-gray-600"><strong>Visitors:</strong> {Visitors}</p>
+                <p className="text-gray-600"><strong>Cost:</strong> {Cost} </p>
                 <div className="card-actions mt-4 flex justify-center">
                     <Link to={`SpotUpdate/${_id}`} className="btn btn-success px-4 py-2 rounded-md transition hover:bg-green-700">
-                        আপডেট করুন
+                        Update
                     </Link>
                     <button onClick={handleDelete} className="btn btn-error px-4 py-2 rounded-md transition hover:bg-red-700">
-                        ডিলিট করুন
+                        Delete
                     </button>
                 </div>
             </div>

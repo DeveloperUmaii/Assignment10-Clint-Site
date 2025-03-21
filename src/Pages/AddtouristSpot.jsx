@@ -1,7 +1,12 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const AddtouristSpot = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/"; // ✅ আগের লোকেশন না থাকলে "/MyList" এ যাবে
+
     const handleAddButon = event => {
         event.preventDefault();
 
@@ -33,7 +38,7 @@ const AddtouristSpot = () => {
                         text: "Data successfully Submitted!",
                         icon: "success",
                         confirmButtonText: 'Done'
-                    });
+                    }).then(() => navigate(from, { replace: true }));
                 }
             })
             .catch(err => console.error('❌ ডাটা পাঠাতে সমস্যা হয়েছে:', err));
