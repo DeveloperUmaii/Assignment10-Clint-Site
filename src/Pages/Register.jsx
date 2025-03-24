@@ -3,9 +3,13 @@ import { auth } from "./FirebaseConfig/Firebase.init";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation(); // ✅ আগের লোকেশন পাওয়া যাবে
+  const from = location.state?.from?.pathname || "/"; // ✅ আগের লোকেশন না থাকলে "/MyList" এ যাবে
 
   const handleRegister = async (event) => {
     event.preventDefault();
@@ -31,6 +35,7 @@ const Register = () => {
       });
 
       Swal.fire("Success", "Registration successful!", "success");
+      navigate(from, { replace: true }); // ✅ আগের লোকেশনে পাঠাবে
     } catch (error) {
       Swal.fire("Error", error.message, "error");
     }
