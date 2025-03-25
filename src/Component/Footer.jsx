@@ -6,8 +6,8 @@ const Footer = () => {
     <footer className=" bg-gray-900 text-white py-6 px-4 ">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
         <div className="mb-4 md:mb-0">
-          <h2 className="text-2xl font-bold text-yellow-500">MyApp</h2>
-          <p className="text-gray-400">&copy; {new Date().getFullYear()} MyApp. All rights reserved.</p>
+          <h2 className="text-2xl font-bold text-yellow-500">Cox-Tourism</h2>
+          <p className="text-gray-400">&copy; {new Date().getFullYear()} Cox-Tourism. All rights reserved.</p>
         </div>
         <div className="flex space-x-6">
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-500 text-2xl hover:text-blue-600">

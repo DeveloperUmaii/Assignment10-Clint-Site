@@ -24,7 +24,7 @@ const SpotUpdate = () => {
         };
 
         // ✅ PUT Request পাঠানো
-        fetch(`http://localhost:5000/SpotUpdate/${spot._id}`, {
+        fetch(`https://cox-tourism-global-server.vercel.app/SpotUpdate/${spot._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

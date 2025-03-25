@@ -22,7 +22,7 @@ const Navbar = () => {
     <nav className=" flex justify-between  bg-gray-900  text-white py-4 px-6 shadow-lg relative">
       <div className="">
         <NavLink to="/" className="text-2xl font-bold text-yellow-500">
-          MyApp
+        Cox-Tourism
         </NavLink>
       </div>
 

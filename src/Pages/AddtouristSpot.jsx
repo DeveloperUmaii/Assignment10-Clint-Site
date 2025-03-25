@@ -23,7 +23,7 @@ const AddtouristSpot = () => {
 
         const TouristSpot = { image, SpotName, Country, Location, Season, TravelTime, Visitors, Description, Cost };
 
-        fetch('http://localhost:5000/spot', {
+        fetch('https://cox-tourism-global-server.vercel.app/spot', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

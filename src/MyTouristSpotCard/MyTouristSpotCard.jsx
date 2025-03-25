@@ -18,7 +18,7 @@ const MyTouristSpotCard = ({ spot, onDelete }) => {
 
         if (result.isConfirmed) {
             try {
-                const response = await fetch(`http://localhost:5000/spot/${_id}`, {
+                const response = await fetch(`https://cox-tourism-global-server.vercel.app/spot/${_id}`, {
                     method: "DELETE",
                 });
 

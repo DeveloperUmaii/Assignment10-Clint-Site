@@ -28,7 +28,7 @@ const router = createBrowserRouter([
     children: [
       { index: true,
         element: <Home />,
-        loader : () => fetch('http://localhost:5000/spot')
+        loader : () => fetch('https://cox-tourism-global-server.vercel.app/spot')
       },
                     //একই কাজ করবে তবে এইটা দেওয়া অধিকতার উত্তম, সমস্যা হওয়ার সম্ভাবনা নেই
       //{ path: "/", element: <Home /> },
@@ -36,21 +36,21 @@ const router = createBrowserRouter([
       {
          path: "AlltouristSpot",
          element: <AlltouristSpot />,
-         loader : () => fetch('http://localhost:5000/spot'),
+         loader : () => fetch('https://cox-tourism-global-server.vercel.app/spot'),
       },
       {
          path: "Details/:id",
          element: <PrivateRout>
                       <Details></Details>,
                   </PrivateRout>,
-         loader : ({params}) => fetch(`http://localhost:5000/spot/${params.id}`)
+         loader : ({params}) => fetch(`https://cox-tourism-global-server.vercel.app/spot/${params.id}`)
       },
       {
         path: "AlltouristSpot/Details/:id",
         element: <PrivateRout>
                      <Details></Details>,
                  </PrivateRout>,
-        loader : ({params}) => fetch(`http://localhost:5000/spot/${params.id}`)
+        loader : ({params}) => fetch(`https://cox-tourism-global-server.vercel.app/spot/${params.id}`)
       },
       { path: "AddtouristSpot",
         element: <AddtouristSpot /> },
@@ -59,13 +59,13 @@ const router = createBrowserRouter([
         element: <PrivateRout>
                     <MyList />,
                  </PrivateRout>,
-        loader : () => fetch('http://localhost:5000/spot'),
+        loader : () => fetch('https://cox-tourism-global-server.vercel.app/spot'),
       },
       { path: "/MyList/SpotUpdate/:id",
         element: <PrivateRout>
                     <SpotUpdate></SpotUpdate>,
                   </PrivateRout>,
-        loader : ({params}) => fetch(`http://localhost:5000/spot/${params.id}`),
+        loader : ({params}) => fetch(`https://cox-tourism-global-server.vercel.app/spot/${params.id}`),
       },
       { path: "LogIn", 
         element: <LogIn />, 
